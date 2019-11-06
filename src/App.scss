@@ -4,10 +4,6 @@
   text-align: center;
 }
 
-.board-row {
-  width: 102px;
-}
-
 .status {
   margin-bottom: 10px;
 }
@@ -42,4 +38,9 @@
 
 .game-info {
   margin-left: 20px;
+}
+
+.active,
+.active > button {
+  font-weight: bold;
 }
