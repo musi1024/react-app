@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.scss';
 
 function Square(params) {
@@ -55,14 +55,16 @@ function App() {
   const [xIsNext, setXIsNext] = useState(true);
   const [history, setHistory] = useState([]);
   const [stepNumber, setStepNumber] = useState(0);
-
-  let status;
+  const [status, setStatus] = useState('');
   const winner = calculateWinner(history[stepNumber - 1], colNum, 5);
-  if (winner) {
-    status = 'Winner: ' + winner;
-  } else {
-    status = `Next player: ${xIsNext ? 'X' : 'O'}`;
-  }
+
+  useEffect(() => {
+    if (winner) {
+      setStatus('Winner: ' + winner);
+    } else {
+      setStatus(`Next player: ${xIsNext ? 'X' : 'O'}`);
+    }
+  }, [winner, xIsNext]);
 
   function handleClick(key, row, col) {
     let newSquares = [...squares];
